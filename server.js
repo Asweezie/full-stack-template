@@ -20,8 +20,12 @@ let db,
         console.log('Connected to MongoDB')
         db = client.db(dbName)
         collection = db.collection('three-houses')
+
+        app.get('/', (req, res) => {
+            res.render(__dirname + '/views/index.ejs')
+        })
     })
 
     app.listen(process.env.PORT || PORT, () => {
-        console.log('Server is running...')
+        console.log('Server is running on port ' + process.env.PORT || PORT)
     })
